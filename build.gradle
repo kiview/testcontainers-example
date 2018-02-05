@@ -1,22 +1,28 @@
 group 'com.groovycoder'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
+apply plugin: 'groovy'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     compile 'org.flywaydb:flyway-core:5.0.6'
     compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '1.0.0'
 
     runtime 'org.postgresql:postgresql:42.2.1'
 
     testCompile 'junit:junit:4.12'
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
+
+    testCompile 'com.github.testcontainers:testcontainers-spock:1.0.0-tc1.6.0'
 
     // special testcontainers module for specialized postgresql containers
     testCompile 'org.testcontainers:postgresql:1.6.0'
+    testCompile 'org.testcontainers:kafka:1.6.0'
 }
