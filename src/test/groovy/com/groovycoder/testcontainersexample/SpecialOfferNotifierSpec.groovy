@@ -23,16 +23,11 @@ class SpecialOfferNotifierSpec extends Specification {
 
     def "kafka works"() {
 
-        given:
-        KafkaProducer<String, String> producer = new KafkaProducer<>(
-                ImmutableMap.of(
-                        ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafka.bootstrapServers,
-                        ProducerConfig.CLIENT_ID_CONFIG, UUID.randomUUID().toString()
-                ),
-                new StringSerializer(),
-                new StringSerializer())
+        given: "the notifier"
+        def topic = "notification"
+        def notifier = new SpecialOfferNotifier(kafka.bootstrapServers, "clientFoobar", topic)
 
-
+        and: "a consumer for testing"
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(
                 ImmutableMap.of(
                         ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafka.bootstrapServers,
@@ -41,20 +36,22 @@ class SpecialOfferNotifierSpec extends Specification {
                 ),
                 new StringDeserializer(),
                 new StringDeserializer())
+        consumer.subscribe(Arrays.asList(topic))
 
-        String topicName = "messages"
-        consumer.subscribe(Arrays.asList(topicName))
+        when: "sending notification"
+        def notificationMessage = "Special offer, Docker stickers!"
+        notifier.sendNotification(notificationMessage)
 
-        when:
-        producer.send(new ProducerRecord<>(topicName, "testcontainers", "rulezzz")).get()
-
-        then:
+        then: "test consumer received record after some time"
         ConsumerRecords<String, String> records
         Unreliables.retryUntilTrue(10, TimeUnit.SECONDS, {
             records = consumer.poll(100)
             return !records.isEmpty()
         })
         consumer.unsubscribe()
+
+        and: "received records contains sent notification"
+        records.first().value() == notificationMessage
     }
 
 }
