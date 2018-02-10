@@ -8,7 +8,8 @@ Es war einmal vor langer Zeit, in einer weit entfernten Software-Entwicklungs-Ga
 
 Doch auch später, als es üblich wurde Unit-Tests zu schreiben (interessanterweise gibt es verschiedene historische Definitionen von _Unit_ in diesem Kontext, das Wort meint entweder die zu testestende Einheit der Software, oder besagt, dass der Tests selber eine Einheit darstellt), wurde Testen von Entwicklern gerne stiefmütterlich behandelt oder, dem over-the-shoulder Prinzip folgend, der Testabteilung überlassen (und ob diese Abteilung automatisiert oder manuell testet, was kümmert mich als Entwickler das?). Aus dieser Zeit, und lehrreichen Softwaretechnikvorlesungen, ist dem einen oder anderen sicherlich die klassische Testpyramide bekannt.
 
-![Testpyramide](https://blog.namics.com/2012/06/tour-durch-die-testpyramide.html)
+![Testpyramide](https://blog.namics.com/files/2012/06/idealautomatedtestingpyramid.png)
+(Quelle: https://blog.namics.com/2012/06/tour-durch-die-testpyramide.html)
 
 ## Die Agile-Revolution
 Diese Einstellung in Bezug aufs Testen änderte sich in den 90ern im Zuge der Agile-Revolution mit dem Aufkommen von Techniken wie Xtreme Programming ([XP](https://de.wikipedia.org/wiki/Extreme_Programming)) und Test Driven Development ([TDD](https://de.wikipedia.org/wiki/Testgetriebene_Entwicklung)), sowie einer gehoben Wertschätzung für den Aspekt der Software-Qualität zumindest in Teilen der Entwickler-Community. Das Schreiben von Unit-Tests fiel im Zuge von TDD nun eindeutig in den Verantwortungsbereich des Entwicklers und auch Integration-Tests wurden, wo nötig, von Entwicklern geschrieben. Wann immer möglich wurde allerdings versucht auf Integration-Tests zu verzichten, waren diese doch eine zeitaufwändige und fragile Angelegenheit, schließlich musste sich wohlmöglich die gesamte Entwicklungsabteilung die selbe, mühsam von Hand gepflegte, Testumgebung für die Integration-Tests teilen.
@@ -146,7 +147,7 @@ Im `@Before` Block sehen wir außerdem, dass [Flyway](https://flywaydb.org/) ver
 ### Integration-Tests gegen <insert-your-favourite-software-here>
 Grundsätzlich lässt sich Testcontainers mit jeder Software nutzen, die sich innerhalb eines Docker-Containers ausführen lässt. Abseits von `PostgreSQLContainer` und `GenericContainer` gibt es noch viele weitere spezielle Klassen, die übliche Software in komfortable Art und Weise bereitstellen (Beispiele sind Kafka, Cassandra, oder Selenium). Auch Integration-Tests gegen selbstgeschriebene Software-Komponenten sind dank `GenericContainer` kein Problem.
 
-PS: Testcontainers unterstützt Linux, Docker Machine, Docker for Mac und Docker for Window out-of-the-box (Windows so gut out-of-the-box wie man es von Windows ewarten kann, siehe: [Windows Support](https://www.testcontainers.org/usage/windows_support.html)) :slight_smile:
+PS: Testcontainers unterstützt Linux, Docker Machine, Docker for Mac und Docker for Window out-of-the-box (Windows so gut out-of-the-box wie man es von Windows ewarten kann, siehe: [Windows Support](https://www.testcontainers.org/usage/windows_support.html)) :relaxed:
 
 ## Links
   * [Integrated Tests are a Scam](http://blog.thecodewhisperer.com/permalink/integrated-tests-are-a-scam)
