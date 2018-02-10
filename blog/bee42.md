@@ -17,7 +17,7 @@ Diese Einstellung in Bezug aufs Testen änderte sich in den 90ern im Zuge der Ag
 ## Testen im Microservice-Zeitalter
 Vor kurzem hat Spotify einen interessanten [Blogartikel](https://labs.spotify.com/2018/01/11/testing-of-microservices/) zum Thema _Testen von Microservices_ veröffentlicht, in dem die Nützlichkeit der klassischen Testpyramide in Frage gestellt wird und die Testhonigwabe als alternatives Paradigma vorgestellt wird. 
 
-![Honeycomb](https://spotifylabscom.files.wordpress.com/2018/02/traditional-testing-pyramid-31.png?w=350&h=256&zoom=2)
+![Honeycomb](https://spotifylabscom.files.wordpress.com/2018/02/microservices-testing-honeycomb-2.png?w=310&h=308&zoom=2)
 
 (Quelle: https://labs.spotify.com/2018/01/11/testing-of-microservices/)
 
@@ -147,7 +147,7 @@ Im `@Before` Block sehen wir außerdem, dass [Flyway](https://flywaydb.org/) ver
 ### Integration-Tests gegen $insert-your-favourite-software-here
 Grundsätzlich lässt sich Testcontainers mit jeder Software nutzen, die sich innerhalb eines Docker-Containers ausführen lässt. Abseits von `PostgreSQLContainer` und `GenericContainer` gibt es noch viele weitere spezielle Klassen, die übliche Software in komfortable Art und Weise bereitstellen (Beispiele sind Kafka, Cassandra, oder Selenium). Auch Integration-Tests gegen selbstgeschriebene Software-Komponenten sind dank `GenericContainer` kein Problem.
 
-PS: Testcontainers unterstützt Linux, Docker Machine, Docker for Mac und Docker for Window out-of-the-box (Windows so gut out-of-the-box wie man es von Windows ewarten kann, siehe: [Windows Support](https://www.testcontainers.org/usage/windows_support.html)) :relaxed:
+PS: Testcontainers unterstützt Linux, Docker Machine, Docker for Mac und Docker for Window out-of-the-box (Windows so gut out-of-the-box wie man es von Windows ewarten kann, siehe: [Windows Support](https://www.testcontainers.org/usage/windows_support.html)) :relaxed:.
 
 ## Links
   * [Testcontainers](https://github.com/testcontainers/testcontainers-java)
