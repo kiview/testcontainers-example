@@ -144,7 +144,7 @@ Die `PostgreSQLContainer`-Klasse ist hierbei eine spezielle Testcontainers-Klass
 
 Im `@Before` Block sehen wir außerdem, dass [Flyway](https://flywaydb.org/) verwendet wird. Dies hat mit Testcontainers an sich erstmal nichts zu tun, ist allerdings eine sehr praktische Java-Library für Datenbankmigrationen.
 
-### Integration-Tests gegen <insert-your-favourite-software-here>
+### Integration-Tests gegen $insert-your-favourite-software-here
 Grundsätzlich lässt sich Testcontainers mit jeder Software nutzen, die sich innerhalb eines Docker-Containers ausführen lässt. Abseits von `PostgreSQLContainer` und `GenericContainer` gibt es noch viele weitere spezielle Klassen, die übliche Software in komfortable Art und Weise bereitstellen (Beispiele sind Kafka, Cassandra, oder Selenium). Auch Integration-Tests gegen selbstgeschriebene Software-Komponenten sind dank `GenericContainer` kein Problem.
 
 PS: Testcontainers unterstützt Linux, Docker Machine, Docker for Mac und Docker for Window out-of-the-box (Windows so gut out-of-the-box wie man es von Windows ewarten kann, siehe: [Windows Support](https://www.testcontainers.org/usage/windows_support.html)) :relaxed:
