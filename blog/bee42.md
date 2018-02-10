@@ -150,4 +150,6 @@ Grundsätzlich lässt sich Testcontainers mit jeder Software nutzen, die sich in
 PS: Testcontainers unterstützt Linux, Docker Machine, Docker for Mac und Docker for Window out-of-the-box (Windows so gut out-of-the-box wie man es von Windows ewarten kann, siehe: [Windows Support](https://www.testcontainers.org/usage/windows_support.html)) :relaxed:
 
 ## Links
+  * [Testcontainers](https://github.com/testcontainers/testcontainers-java)
+  * [Testing of Microservices](https://labs.spotify.com/2018/01/11/testing-of-microservices/)
   * [Integrated Tests are a Scam](http://blog.thecodewhisperer.com/permalink/integrated-tests-are-a-scam)
