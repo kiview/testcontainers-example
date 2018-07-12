@@ -11,18 +11,18 @@ repositories {
 }
 
 dependencies {
-    compile 'org.flywaydb:flyway-core:5.0.6'
-    compile 'ch.qos.logback:logback-classic:1.2.3'
-    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '1.0.0'
+
+    implementation 'org.flywaydb:flyway-core:5.0.6'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'org.apache.kafka:kafka-clients:1.0.0'
 
     runtime 'org.postgresql:postgresql:42.2.1'
 
-    testCompile 'junit:junit:4.12'
-    testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.spockframework:spock-core:1.1-groovy-2.4'
 
-    testCompile 'com.github.testcontainers:testcontainers-spock:1.0.0-tc1.6.0'
-
-    // special testcontainers module for specialized postgresql containers
-    testCompile 'org.testcontainers:postgresql:1.6.0'
-    testCompile 'org.testcontainers:kafka:1.6.0'
+    testImplementation 'org.testcontainers:testcontainers-bom:1.8.1'
+    testImplementation 'org.testcontainers:postgresql'
+    testImplementation 'org.testcontainers:kafka'
+    testImplementation 'org.testcontainers:spock'
 }

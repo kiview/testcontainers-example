@@ -1,8 +1,8 @@
 package com.groovycoder.testcontainersexample
 
-import com.groovycoder.spockdockerextension.Testcontainers
 import org.flywaydb.core.Flyway
 import org.testcontainers.containers.PostgreSQLContainer
+import org.testcontainers.spock.Testcontainers
 import spock.lang.Specification
 
 @Testcontainers

@@ -1,6 +1,5 @@
 package com.groovycoder.testcontainersexample
 
-import com.groovycoder.spockdockerextension.Testcontainers
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.consumer.ConsumerRecords
 import org.apache.kafka.clients.consumer.KafkaConsumer
@@ -12,6 +11,7 @@ import org.apache.kafka.common.serialization.StringSerializer
 import org.rnorth.ducttape.unreliables.Unreliables
 import org.testcontainers.containers.KafkaContainer
 import org.testcontainers.shaded.com.google.common.collect.ImmutableMap
+import org.testcontainers.spock.Testcontainers
 import spock.lang.Specification
 
 import java.util.concurrent.TimeUnit
