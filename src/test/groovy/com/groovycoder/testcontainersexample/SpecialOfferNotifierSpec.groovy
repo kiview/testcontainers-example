@@ -6,7 +6,6 @@ import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.rnorth.ducttape.unreliables.Unreliables
 import org.testcontainers.containers.KafkaContainer
-import org.testcontainers.shaded.com.google.common.collect.ImmutableMap
 import org.testcontainers.spock.Testcontainers
 import spock.lang.Specification
 
@@ -40,11 +39,11 @@ class SpecialOfferNotifierSpec extends Specification {
 
     private KafkaConsumer<String, String> createConsumer(String topic) {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(
-                ImmutableMap.of(
-                        ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafka.bootstrapServers,
-                        ConsumerConfig.GROUP_ID_CONFIG, "tc-" + UUID.randomUUID(),
-                        ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"
-                ),
+                [
+                        (ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG): kafka.bootstrapServers,
+                        (ConsumerConfig.GROUP_ID_CONFIG)         : "tc-" + UUID.randomUUID(),
+                        (ConsumerConfig.AUTO_OFFSET_RESET_CONFIG): "earliest"
+                ],
                 new StringDeserializer(),
                 new StringDeserializer())
         consumer.subscribe(Arrays.asList(topic))
