@@ -1,2 +1,1 @@
 rootProject.name = 'testcontainers-blog-example'
-enableFeaturePreview('IMPROVED_POM_SUPPORT')
