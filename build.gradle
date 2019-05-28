@@ -27,14 +27,15 @@ dependencies {
     testImplementation 'org.testcontainers:spock'
 
     testImplementation 'org.testcontainers:junit-jupiter'
+    testCompile group: 'org.awaitility', name: 'awaitility', version: '3.1.6'
     testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
 // Uncomment for JUnit5 tests
-//test {
-//    useJUnitPlatform()
-//    testLogging {
-//        events "passed", "skipped", "failed"
-//    }
-//}
-//
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
