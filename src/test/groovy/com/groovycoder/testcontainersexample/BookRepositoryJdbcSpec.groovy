@@ -13,6 +13,7 @@ class BookRepositoryJdbcSpec extends Specification {
         flyway.setDataSource(TC_JDBC_URL,
                 '',
                 '')
+        flyway.clean()
         flyway.migrate()
     }
 
@@ -20,11 +21,6 @@ class BookRepositoryJdbcSpec extends Specification {
         new BookRepository(TC_JDBC_URL,
                 '',
                 '')
-    }
-
-    def "empty repository is empty"() {
-        expect:
-        buildRepository().count() == 0
     }
 
     def "repository contains one book after saving it"() {
