@@ -1,9 +1,12 @@
+plugins {
+    id 'java'
+}
+
 group 'com.groovycoder'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'groovy'
 
-sourceCompatibility = 12
+sourceCompatibility = 13
 
 repositories {
     mavenCentral()
@@ -18,13 +21,9 @@ dependencies {
 
     runtime 'org.postgresql:postgresql:42.2.1'
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.spockframework:spock-core:1.1-groovy-2.4'
-
-    testImplementation platform('org.testcontainers:testcontainers-bom:1.12.5')
+    testImplementation platform('org.testcontainers:testcontainers-bom:1.13.0')
     testImplementation 'org.testcontainers:postgresql'
     testImplementation 'org.testcontainers:kafka'
-    testImplementation 'org.testcontainers:spock'
 
     testImplementation 'org.testcontainers:junit-jupiter'
     testCompile group: 'org.awaitility', name: 'awaitility', version: '3.1.6'
