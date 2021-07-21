@@ -21,7 +21,7 @@ dependencies {
 
     runtime 'org.postgresql:postgresql:42.2.1'
 
-    testImplementation platform('org.testcontainers:testcontainers-bom:1.14.0')
+    testImplementation platform('org.testcontainers:testcontainers-bom:1.16.0')
     testImplementation 'org.testcontainers:postgresql'
     testImplementation 'org.testcontainers:kafka'
 
