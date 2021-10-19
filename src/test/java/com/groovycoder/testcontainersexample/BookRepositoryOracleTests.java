@@ -1,10 +1,12 @@
 package com.groovycoder.testcontainersexample;
 
 import org.flywaydb.core.Flyway;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.testcontainers.containers.OracleContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
 import java.util.List;
 
@@ -12,16 +14,19 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class BookRepositoryTests {
+@Testcontainers
+class BookRepositoryOracleTests {
 
-    @Rule
-    public PostgreSQLContainer databaseContainer = new PostgreSQLContainer();
+    @Container
+    private static OracleContainer databaseContainer = new OracleContainer(DockerImageName.parse("gvenzl/oracle-xe"));
 
-    @Before
-    public void setup() {
+    @BeforeEach
+    void setup() {
         Flyway flyway = new Flyway();
+        flyway.setLocations("oracle");
         flyway.setDataSource(databaseContainer.getJdbcUrl(), databaseContainer.getUsername(),
                 databaseContainer.getPassword());
+        flyway.clean();
         flyway.migrate();
     }
 
@@ -31,13 +36,13 @@ public class BookRepositoryTests {
     }
 
     @Test
-    public void emptyRepository_isEmpty() {
+    void emptyRepository_isEmpty() {
         BookRepository bookRepository = buildRepository();
         assertEquals(0L, bookRepository.count());
     }
 
     @Test
-    public void repository_contains_one_book_after_saving_it() {
+    void repository_contains_one_book_after_saving_it() {
         BookRepository bookRepository = buildRepository();
         Book mobyDick = new Book("Moby Dick", "Herman Melville");
 
@@ -47,7 +52,7 @@ public class BookRepositoryTests {
     }
 
     @Test
-    public void repository_finds_books_of_given_author() {
+    void repository_finds_books_of_given_author() {
         BookRepository bookRepository = buildRepository();
         Book mobyDick = new Book("Moby Dick", "Herman Melville");
         String terryPratchett = "Terry Pratchett";
