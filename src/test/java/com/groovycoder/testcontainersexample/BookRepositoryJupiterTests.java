@@ -3,11 +3,9 @@ package com.groovycoder.testcontainersexample;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.OracleContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.utility.DockerImageName;
 
 import java.util.List;
 
@@ -19,7 +17,7 @@ import static org.junit.Assert.assertThat;
 class BookRepositoryJupiterTests {
 
     @Container
-    private static PostgreSQLContainer databaseContainer = new PostgreSQLContainer<>();
+    private static PostgreSQLContainer databaseContainer = new PostgreSQLContainer<>("postgres:9.6.12");
 
     @BeforeEach
     void setup() {

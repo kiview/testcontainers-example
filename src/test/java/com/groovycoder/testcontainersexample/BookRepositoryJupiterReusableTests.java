@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.List;
 
@@ -16,7 +14,8 @@ import static org.junit.Assert.assertThat;
 
 class BookRepositoryJupiterReusableTests {
 
-    private static PostgreSQLContainer databaseContainer = new PostgreSQLContainer<>().withReuse(true);
+    private static PostgreSQLContainer databaseContainer = new PostgreSQLContainer<>("postgres:9.6.12")
+            .withReuse(true);
 
     @BeforeAll
     static void startContainer() {

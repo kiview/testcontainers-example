@@ -4,11 +4,11 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class SpecialOfferNotifierJupiterTests {
 
     @Container
-    private KafkaContainer kafka = new KafkaContainer();
+    private KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
 
     @Test
     void notifierSendsRecordsToKafkaTopic() {
