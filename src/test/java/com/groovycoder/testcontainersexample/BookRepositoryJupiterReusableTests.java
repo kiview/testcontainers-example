@@ -25,6 +25,7 @@ class BookRepositoryJupiterReusableTests {
     @BeforeEach
     void setup() {
         Flyway flyway = new Flyway();
+        flyway.setLocations("postgresql");
         flyway.setDataSource(databaseContainer.getJdbcUrl(), databaseContainer.getUsername(),
                 databaseContainer.getPassword());
         flyway.clean();
