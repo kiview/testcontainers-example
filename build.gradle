@@ -6,7 +6,7 @@ group 'com.groovycoder'
 version '1.0-SNAPSHOT'
 
 
-sourceCompatibility = 13
+sourceCompatibility = 17
 
 repositories {
     mavenCentral()
