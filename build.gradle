@@ -5,8 +5,11 @@ plugins {
 group 'com.groovycoder'
 version '1.0-SNAPSHOT'
 
-
-sourceCompatibility = 17
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 repositories {
     mavenCentral()
