@@ -17,7 +17,7 @@ import static org.junit.Assert.assertThat;
 class BookRepositoryJupiterTests {
 
     @Container
-    private static PostgreSQLContainer databaseContainer = new PostgreSQLContainer<>("postgres:9.6.12");
+    private PostgreSQLContainer databaseContainer = new PostgreSQLContainer<>("postgres:9.6.12");
 
     @BeforeEach
     void setup() {
