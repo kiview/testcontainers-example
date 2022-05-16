@@ -21,8 +21,8 @@ public class BookRepository {
             String insertBookSql = "INSERT INTO books (name, author) VALUES (?, ?)";
 
             PreparedStatement ps = c.prepareStatement(insertBookSql);
-            ps.setString(1, book.name);
-            ps.setString(2, book.author);
+            ps.setString(1, book.name());
+            ps.setString(2, book.author());
             ps.executeUpdate();
 
         } catch (SQLException e) {
