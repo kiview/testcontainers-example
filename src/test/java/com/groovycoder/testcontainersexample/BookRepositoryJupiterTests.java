@@ -25,7 +25,6 @@ class BookRepositoryJupiterTests {
         flyway.setLocations("postgresql");
         flyway.setDataSource(databaseContainer.getJdbcUrl(), databaseContainer.getUsername(),
                 databaseContainer.getPassword());
-        flyway.clean();
         flyway.migrate();
     }
 
