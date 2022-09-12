@@ -25,6 +25,9 @@ class BookRepositoryJupiterTests {
         flyway.setLocations("postgresql");
         flyway.setDataSource(databaseContainer.getJdbcUrl(), databaseContainer.getUsername(),
                 databaseContainer.getPassword());
+
+        // For port-updater plugin
+        System.out.println("Database: " + databaseContainer.getJdbcUrl());
         flyway.migrate();
     }
 
