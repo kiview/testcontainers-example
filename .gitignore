@@ -1,4 +1,5 @@
 .gradle/
 .idea/
+.fleet/
 build/
 out/
