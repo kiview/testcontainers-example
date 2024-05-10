@@ -18,25 +18,22 @@ repositories {
 dependencies {
 
     implementation 'org.flywaydb:flyway-core:5.0.6'
-    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'ch.qos.logback:logback-classic:1.5.6'
 
     testImplementation platform('org.testcontainers:testcontainers-bom:1.19.8')
 
     testImplementation 'org.testcontainers:postgresql'
-    runtimeOnly 'org.postgresql:postgresql:42.2.1'
+    runtimeOnly 'org.postgresql:postgresql:42.7.3'
 
     testImplementation 'org.testcontainers:oracle-xe'
-    runtimeOnly 'com.oracle.database.jdbc:ojdbc8:21.3.0.0'
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc8:23.3.0.23.09'
 
     testImplementation 'org.testcontainers:kafka'
-    implementation 'org.apache.kafka:kafka-clients:1.0.0'
+    implementation 'org.apache.kafka:kafka-clients:3.7.0'
 
-    testImplementation 'org.testcontainers:azure'
-    testImplementation 'com.azure:azure-cosmos:4.16.0'
-
-    testImplementation 'org.awaitility:awaitility:3.1.6'
+    testImplementation 'org.awaitility:awaitility:4.2.1'
     
-    testImplementation(platform('org.junit:junit-bom:5.7.2'))
+    testImplementation(platform('org.junit:junit-bom:5.10.2'))
 	testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.testcontainers:junit-jupiter'
 }
