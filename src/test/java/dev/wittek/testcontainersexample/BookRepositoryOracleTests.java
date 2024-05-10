@@ -1,6 +1,7 @@
-package com.groovycoder.testcontainersexample;
+package dev.wittek.testcontainersexample;
 
 import org.flywaydb.core.Flyway;
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.OracleContainer;
@@ -66,7 +67,7 @@ class BookRepositoryOracleTests {
         List<Book> queriedBooks = bookRepository.findAllByAuthor(terryPratchett);
 
         assertEquals(2, queriedBooks.size());
-        assertThat(queriedBooks, hasItems(magic, elephant));
+        assertThat(queriedBooks, CoreMatchers.hasItems(magic, elephant));
     }
 
 }

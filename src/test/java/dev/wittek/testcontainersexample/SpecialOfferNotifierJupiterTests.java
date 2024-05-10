@@ -1,4 +1,4 @@
-package com.groovycoder.testcontainersexample;
+package dev.wittek.testcontainersexample;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;

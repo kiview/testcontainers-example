@@ -1,11 +1,11 @@
-package com.groovycoder.testcontainersexample;
+package dev.wittek.testcontainersexample;
 
 import org.flywaydb.core.Flyway;
+import org.hamcrest.CoreMatchers;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.List;
 
@@ -13,11 +13,15 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-@Testcontainers
-class BookRepositoryJupiterTests {
+class BookRepositoryJupiterReusableTests {
 
-    @Container
-    private PostgreSQLContainer databaseContainer = new PostgreSQLContainer<>("postgres:9.6.12");
+    private static PostgreSQLContainer databaseContainer = new PostgreSQLContainer<>("postgres:9.6.12")
+            .withReuse(true);
+
+    @BeforeAll
+    static void startContainer() {
+        databaseContainer.start();
+    }
 
     @BeforeEach
     void setup() {
@@ -25,9 +29,7 @@ class BookRepositoryJupiterTests {
         flyway.setLocations("postgresql");
         flyway.setDataSource(databaseContainer.getJdbcUrl(), databaseContainer.getUsername(),
                 databaseContainer.getPassword());
-
-        // For port-updater plugin
-        System.out.println("Database: " + databaseContainer.getJdbcUrl());
+        flyway.clean();
         flyway.migrate();
     }
 
@@ -67,7 +69,7 @@ class BookRepositoryJupiterTests {
         List<Book> queriedBooks = bookRepository.findAllByAuthor(terryPratchett);
 
         assertEquals(2, queriedBooks.size());
-        assertThat(queriedBooks, hasItems(magic, elephant));
+        assertThat(queriedBooks, CoreMatchers.hasItems(magic, elephant));
     }
 
 }

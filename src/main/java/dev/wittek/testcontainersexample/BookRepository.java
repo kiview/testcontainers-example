@@ -1,4 +1,4 @@
-package com.groovycoder.testcontainersexample;
+package dev.wittek.testcontainersexample;
 
 import java.sql.*;
 import java.util.LinkedList;
